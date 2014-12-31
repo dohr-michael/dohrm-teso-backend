@@ -1,0 +1,17 @@
+logs:
+  image: busybox:latest
+  volumes:
+    - ~/docker-data/teso-tools/logs:/var/log
+dbdata:
+  image: busybox:latest
+  volumes:
+    - ~/docker-data/teso-tools/db:/etc/mysql
+db:
+  image: mysql:latest
+  ports:
+    - "3306:3306"
+  environment:
+    - MYSQL_ROOT_PASSWORD=root
+  volumes_from:
+    - logs
+    - dbdata
