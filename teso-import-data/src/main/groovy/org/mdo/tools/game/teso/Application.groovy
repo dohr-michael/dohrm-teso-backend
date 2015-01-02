@@ -252,6 +252,7 @@ class Application {
     public static void main(String[] args) {
         def ingredientsFile = new File("D:\\Dev\\tmp\\teso-alchemy-ingredients.json")
         def effectsFile = new File("D:\\Dev\\tmp\\teso-alchemy-effects.json")
+        def sqlFile = new File("D:\\Dev\\tmp\\teso-import.sql")
         if (ingredientsFile.exists()) {
             ingredientsFile.delete()
         }
@@ -260,31 +261,54 @@ class Application {
             effectsFile.delete()
         }
         effectsFile.createNewFile()
+        if (sqlFile.exists()) {
+            sqlFile.delete()
+        }
+        sqlFile.createNewFile()
 
         def ingredientList = []
+        def effectsSql = []
+        def ingredientsSql = []
+        def translationsSql = []
+        def linkEffectIngredientSql = []
         def effectsMap = new HashMap()
         ITEMS.each { current ->
             def img = current.image.toURL().openStream().bytes.encodeBase64().toString()
             def fr = current.name.fr
             def en = current.name.en
+            def ingredientId = constructId(en)
+            //INSERT INTO funds (ID, date, price) VALUES (23, DATE('2013-02-12'), 22.5) ON DUPLICATE KEY UPDATE ID = 23;
+            ingredientsSql << "INSERT INTO INGREDIENT (REF, IMAGE) VALUES ('$ingredientId', '$img');"
+            translationsSql << "INSERT INTO TRANSLATION (LOCALE, REF, VALUE) VALUES ('en', 'INGREDIENT_$ingredientId', '${en.replace("'", "''")}');"
+            translationsSql << "INSERT INTO TRANSLATION (LOCALE, REF, VALUE) VALUES ('fr', 'INGREDIENT_$ingredientId', '${fr.replace("'", "''")}');"
             def effects = EFFECTS[en]
             if (effects) {
-                processEffect(effectsMap, effects.e1)
-                processEffect(effectsMap, effects.e2)
-                processEffect(effectsMap, effects.e3)
-                processEffect(effectsMap, effects.e4)
+                //ingr_effect_link (ingre_ref varchar(255) not null, effect_ref varchar(255) not null);
+                def e1Id = constructId(effects.e1.en)
+                def e2Id = constructId(effects.e2.en)
+                def e3Id = constructId(effects.e3.en)
+                def e4Id = constructId(effects.e4.en)
+                linkEffectIngredientSql << "INSERT INTO INGR_EFFECT_LINK (INGRE_REF, EFFECT_REF) VALUES ('$ingredientId', '$e1Id');"
+                linkEffectIngredientSql << "INSERT INTO INGR_EFFECT_LINK (INGRE_REF, EFFECT_REF) VALUES ('$ingredientId', '$e2Id');"
+                linkEffectIngredientSql << "INSERT INTO INGR_EFFECT_LINK (INGRE_REF, EFFECT_REF) VALUES ('$ingredientId', '$e3Id');"
+                linkEffectIngredientSql << "INSERT INTO INGR_EFFECT_LINK (INGRE_REF, EFFECT_REF) VALUES ('$ingredientId', '$e4Id');"
+                processEffect(effectsMap, effectsSql, translationsSql, effects.e1)
+                processEffect(effectsMap, effectsSql, translationsSql, effects.e2)
+                processEffect(effectsMap, effectsSql, translationsSql, effects.e3)
+                processEffect(effectsMap, effectsSql, translationsSql, effects.e4)
+
                 ingredientList << "{" +
-                        "\"ref\":\"${constructId(en)}\"," +
+                        "\"ref\":\"${ingredientId}\"," +
                         "\"name\":{" +
                         "\"en\":\"$en\"," +
                         "\"fr\":\"$fr\"" +
                         "}," +
                         "\"img\":\"$img\"," +
                         "\"effects\":[" +
-                        "\"${constructId(effects.e1.en)}\"," +
-                        "\"${constructId(effects.e2.en)}\"," +
-                        "\"${constructId(effects.e3.en)}\"," +
-                        "\"${constructId(effects.e4.en)}\"" +
+                        "\"${e1Id}\"," +
+                        "\"${e2Id}\"," +
+                        "\"${e3Id}\"," +
+                        "\"${e4Id}\"" +
                         "]" +
                         "}"
             }
@@ -305,11 +329,22 @@ class Application {
         effectsFile << "[\n"
         effectsFile << effectList.sort().join(",\n")
         effectsFile << "\n]"
+        sqlFile << "# Ingredients\n"
+        sqlFile << ingredientsSql.sort().join("\n")
+        sqlFile << "\n# Effects\n"
+        sqlFile << effectsSql.sort().join("\n")
+        sqlFile << "\n# Link between ingredients and effects\n"
+        sqlFile << linkEffectIngredientSql.sort().join("\n")
+        sqlFile << "\n# Translations\n"
+        sqlFile << translationsSql.sort().join("\n")
     }
 
-    private static void processEffect(Map<String, Object> effects, def effect) {
+    private static void processEffect(Map<String, Object> effects, List effectsSql, List translationsSql, def effect) {
         def id = constructId(effect.en)
         if (!effects.containsKey(id)) {
+            effectsSql << "INSERT INTO EFFECT (REF) VALUES (\"$id\");"
+            translationsSql << "INSERT INTO TRANSLATION (LOCALE, REF, VALUE) VALUES ('en', 'EFFECT_$id', '${effect.en.replace("'", "''")}');"
+            translationsSql << "INSERT INTO TRANSLATION (LOCALE, REF, VALUE) VALUES ('fr', 'EFFECT_$id', '${effect.fr.replace("'", "''")}');"
             effects.put(id, effect)
         }
     }
