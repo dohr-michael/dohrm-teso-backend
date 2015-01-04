@@ -35,4 +35,21 @@ public class Ingredient {
     public List<Effect> getEffects() {
         return effects;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ingredient that = (Ingredient) o;
+
+        if (ref != null ? !ref.equals(that.ref) : that.ref != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return ref != null ? ref.hashCode() : 0;
+    }
 }

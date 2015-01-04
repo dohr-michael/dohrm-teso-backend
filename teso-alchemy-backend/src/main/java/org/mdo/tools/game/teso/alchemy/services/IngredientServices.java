@@ -31,6 +31,6 @@ public interface IngredientServices {
      * @param ingredientsRef list of ingredient to check
      * @return the list of ingredient compatible with selected.
      */
-    List<Ingredient> getIngredients(final String... ingredientsRef);
+    List<Ingredient> getCompatiblesIngredients(final List<String> ingredientsRef);
 
 }

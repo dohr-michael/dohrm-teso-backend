@@ -20,4 +20,8 @@ public interface IngredientRepository extends JpaRepository<IngredientEntity, St
     @Override
     @Query(value = "SELECT DISTINCT e FROM IngredientEntity e  LEFT JOIN FETCH e.effects")
     List<IngredientEntity> findAll();
+
+    @Override
+    @Query(value = "SELECT DISTINCT e FROM IngredientEntity e LEFT JOIN FETCH e.effects WHERE e.ref IN (:refs)")
+    List<IngredientEntity> findAll(@Param("refs") Iterable<String> refs);
 }

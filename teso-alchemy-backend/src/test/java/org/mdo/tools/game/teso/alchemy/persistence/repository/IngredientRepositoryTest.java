@@ -42,6 +42,11 @@ public class IngredientRepositoryTest {
     }
 
     @Test
+    public void testFindAllFilter() {
+        check(repository.findAll(Lists.newArrayList("BLUE_ENTOLOMA", "BUGLOSS")), "BLUE_ENTOLOMA", "BUGLOSS");
+    }
+
+    @Test
     public void testFindOne() {
         final IngredientEntity empty = repository.findOne("TOTO");
         assertNull(empty);
@@ -57,7 +62,7 @@ public class IngredientRepositoryTest {
         final List<IngredientEntity> oneIngredient = repository.findCompatibleIngredients(Lists.newArrayList("BLUE_ENTOLOMA"));
         check(oneIngredient, "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "NAMIRA_S_ROT", "NIRNROOT", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP");
         final List<IngredientEntity> twoIngredients = repository.findCompatibleIngredients(Lists.newArrayList("BLUE_ENTOLOMA", "NAMIRA_S_ROT"));
-        check(twoIngredients, "BLESSED_THISTLE", "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LADY_S_SMOCK", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "NIRNROOT", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP", "WORMWOOD");
+        check(twoIngredients, "BLESSED_THISTLE", "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LADY_S_SMOCK", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP", "WORMWOOD");
     }
 
     private void check(List<IngredientEntity> ingredients, String... excepts) {
