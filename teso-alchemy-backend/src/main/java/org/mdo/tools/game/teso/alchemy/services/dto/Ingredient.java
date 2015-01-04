@@ -1,0 +1,38 @@
+package org.mdo.tools.game.teso.alchemy.services.dto;
+
+import java.util.*;
+
+/**
+ * @author MDO
+ * @since 02/01/2015
+ */
+public class Ingredient {
+    private String ref;
+    private String image;
+    private final Map<Locale, String> name = new HashMap<>();
+    private final List<Effect> effects = new ArrayList<>();
+
+    public String getRef() {
+        return ref;
+    }
+
+    public void setRef(String ref) {
+        this.ref = ref;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Map<Locale, String> getName() {
+        return name;
+    }
+
+    public List<Effect> getEffects() {
+        return effects;
+    }
+}

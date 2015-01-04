@@ -1,0 +1,170 @@
+[
+  {
+    "ref": "DETECTION",
+    "name": {
+      "en": "Detection",
+      "fr": "Détection"
+    }
+  },
+  {
+    "ref": "IMPLACABLE",
+    "name": {
+      "en": "Implacable",
+      "fr": "Implacable"
+    }
+  },
+  {
+    "ref": "INCREASE_ARMOR",
+    "name": {
+      "en": "Increase Armor",
+      "fr": "Augmente l'armure"
+    }
+  },
+  {
+    "ref": "INCREASE_SPELL_POWER",
+    "name": {
+      "en": "Increase Spell Power",
+      "fr": "Augmente la puissance des sorts"
+    }
+  },
+  {
+    "ref": "INCREASE_SPELL_RESIST",
+    "name": {
+      "en": "Increase Spell Resist",
+      "fr": "Augmente la résistance aux sorts"
+    }
+  },
+  {
+    "ref": "INCREASE_WEAPON_POWER",
+    "name": {
+      "en": "Increase Weapon Power",
+      "fr": "Augmente la puissance de l'arme"
+    }
+  },
+  {
+    "ref": "INVISIBILITY",
+    "name": {
+      "en": "Invisibility",
+      "fr": "Invisible"
+    }
+  },
+  {
+    "ref": "LOWER_ARMOR",
+    "name": {
+      "en": "Lower Armor",
+      "fr": "Diminue l'armure"
+    }
+  },
+  {
+    "ref": "LOWER_SPELL_CRIT",
+    "name": {
+      "en": "Lower Spell Crit",
+      "fr": "Diminue les sorts critique"
+    }
+  },
+  {
+    "ref": "LOWER_SPELL_POWER",
+    "name": {
+      "en": "Lower Spell Power",
+      "fr": "Diminue la puissance des sorts"
+    }
+  },
+  {
+    "ref": "LOWER_SPELL_RESIST",
+    "name": {
+      "en": "Lower Spell Resist",
+      "fr": "Diminue la résistance aux sorts"
+    }
+  },
+  {
+    "ref": "LOWER_WEAPON_CRIT",
+    "name": {
+      "en": "Lower Weapon Crit",
+      "fr": "Diminue l'Arme critique"
+    }
+  },
+  {
+    "ref": "LOWER_WEAPON_POWER",
+    "name": {
+      "en": "Lower Weapon Power",
+      "fr": "Diminue la puissance de l'arme"
+    }
+  },
+  {
+    "ref": "RAVAGE_HEALTH",
+    "name": {
+      "en": "Ravage Health",
+      "fr": "Réduit la Santé"
+    }
+  },
+  {
+    "ref": "RAVAGE_MAGICKA",
+    "name": {
+      "en": "Ravage Magicka",
+      "fr": "Réduit la Magie"
+    }
+  },
+  {
+    "ref": "RAVAGE_STAMINA",
+    "name": {
+      "en": "Ravage Stamina",
+      "fr": "Réduit la vigueur"
+    }
+  },
+  {
+    "ref": "REDUCE_SPEED",
+    "name": {
+      "en": "Reduce Speed",
+      "fr": "Réduit la vitesse"
+    }
+  },
+  {
+    "ref": "RESTORE_HEALTH",
+    "name": {
+      "en": "Restore Health",
+      "fr": "Rend de la Santé"
+    }
+  },
+  {
+    "ref": "RESTORE_MAGICKA",
+    "name": {
+      "en": "Restore Magicka",
+      "fr": "Rend de la Magie"
+    }
+  },
+  {
+    "ref": "RESTORE_STAMINA",
+    "name": {
+      "en": "Restore Stamina",
+      "fr": "Rend de la Vigueur"
+    }
+  },
+  {
+    "ref": "SPEED",
+    "name": {
+      "en": "Speed",
+      "fr": "Vitesse"
+    }
+  },
+  {
+    "ref": "SPELL_CRIT",
+    "name": {
+      "en": "Spell Crit",
+      "fr": "Sort critique"
+    }
+  },
+  {
+    "ref": "STUN",
+    "name": {
+      "en": "Stun",
+      "fr": "Assomer"
+    }
+  },
+  {
+    "ref": "WEAPON_CRIT",
+    "name": {
+      "en": "Weapon Crit",
+      "fr": "Arme critique"
+    }
+  }
+]
