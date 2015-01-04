@@ -13,7 +13,10 @@ import org.mdo.tools.game.teso.alchemy.services.impl.function.IngredientFunction
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author MDO
@@ -30,7 +33,17 @@ public class IngredientServicesImpl implements IngredientServices {
 
     @Override
     public List<Ingredient> getAll() {
-        return Lists.transform(repository.findAll(), new IngredientFunction(translationRepository.findAll()));
+        return Lists.transform(repository.findAll(),
+                new IngredientFunction(translationRepository.findAll()));
+    }
+
+    @Override
+    public List<Ingredient> getAll(List<String> references) {
+        if (references == null || references.isEmpty()) {
+            return new ArrayList<>();
+        }
+        return Lists.transform(repository.findAll(references),
+                new IngredientFunction(translationRepository.findAll()));
     }
 
     @Override

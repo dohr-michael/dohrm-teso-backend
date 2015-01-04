@@ -16,7 +16,7 @@ public interface RecipeServices {
      * @param ingredientsRef ingredients to check.
      * @return the associated recipe.
      */
-    Recipe getRecipeFromIngredients(String... ingredientsRef);
+    Recipe getRecipeFromIngredients(List<String> ingredientsRef);
 
     /**
      * Returns the list of recipes with effects passed in parameter.

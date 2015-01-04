@@ -11,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 import static org.junit.Assert.*;
 
@@ -62,7 +60,7 @@ public class IngredientRepositoryTest {
         final List<IngredientEntity> oneIngredient = repository.findCompatibleIngredients(Lists.newArrayList("BLUE_ENTOLOMA"));
         check(oneIngredient, "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "NAMIRA_S_ROT", "NIRNROOT", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP");
         final List<IngredientEntity> twoIngredients = repository.findCompatibleIngredients(Lists.newArrayList("BLUE_ENTOLOMA", "NAMIRA_S_ROT"));
-        check(twoIngredients, "BLESSED_THISTLE", "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LADY_S_SMOCK", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP", "WORMWOOD");
+        check(twoIngredients, "BLESSED_THISTLE", "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LADY_S_SMOCK", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "NIRNROOT", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP", "WORMWOOD");
     }
 
     private void check(List<IngredientEntity> ingredients, String... excepts) {

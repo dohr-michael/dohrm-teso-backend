@@ -18,6 +18,14 @@ public interface IngredientServices {
     List<Ingredient> getAll();
 
     /**
+     * Returns the list of ingredients passed in parameters.
+     *
+     * @param references the ingredients to find.
+     * @return the list of ingredients.
+     */
+    List<Ingredient> getAll(List<String> references);
+
+    /**
      * Returns the details of a specifics ingredient.
      *
      * @param ingredientRef the ingredient to check
