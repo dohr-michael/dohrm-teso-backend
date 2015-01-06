@@ -52,19 +52,19 @@ public class IngredientServicesImplTest {
         check(twoIngredient, "BLESSED_THISTLE", "BUGLOSS", "COLUMBINE", "EMETIC_RUSSULA", "LADY_S_SMOCK", "LUMINOUS_RUSSULA", "MOUNTAIN_FLOWER", "VIOLET_COPRINUS", "WATER_HYACINTH", "WHITE_CAP", "WORMWOOD");
     }
 
-    private void check(Ingredient ingredient, String ref, String... excepts) {
+    private void check(Ingredient ingredient, String ref, String... needed) {
         assertEquals(ref, ingredient.getRef());
         final List<Effect> ingredients = ingredient.getEffects();
-        assertEquals(excepts.length, ingredients.size());
+        assertEquals(needed.length, ingredients.size());
         assertEquals(2, ingredient.getName().size());
-        for (String except : excepts) {
+        for (String except : needed) {
             assertEquals(1L, ingredients.stream().filter(current -> except.equals(current.getRef())).count());
         }
     }
 
-    private void check(List<Ingredient> ingredients, String... excepts) {
-        assertEquals(excepts.length, ingredients.size());
-        for (String except : excepts) {
+    private void check(List<Ingredient> ingredients, String... needed) {
+        assertEquals(needed.length, ingredients.size());
+        for (String except : needed) {
             assertEquals(1L, ingredients.stream().filter(ingredient -> except.equals(ingredient.getRef())).count());
         }
         for (Ingredient ingredient : ingredients) {

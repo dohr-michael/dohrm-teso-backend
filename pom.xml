@@ -49,6 +49,7 @@
 
         <module>teso-import-data</module>
         <module>teso-alchemy-backend</module>
+        <module>teso-alchemy-frontend</module>
     </modules>
 
 </project>
