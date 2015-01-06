@@ -1,0 +1,22 @@
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Effects</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="ingredient in ingredients">
+      <td><span><img ng-src="{{'data:image/gif;base64,' + ingredient.image}}"> {{ingredient.name['fr']}}</span></td>
+      <td>
+        <ul>
+          <li ng-repeat="effect in ingredient.effects">
+            {{effect.name['fr']}}
+          </li>
+        </ul>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
