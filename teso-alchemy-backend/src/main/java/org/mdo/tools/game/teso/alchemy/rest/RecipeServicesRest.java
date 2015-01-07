@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import org.mdo.tools.game.teso.alchemy.services.RecipeServices;
 import org.mdo.tools.game.teso.alchemy.services.dto.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,6 +21,7 @@ public class RecipeServicesRest {
 
     @RequestMapping(method = RequestMethod.GET, value = "ingredients")
     @ResponseBody
+    @Cacheable(value = "restCache")
     public Recipe getRecipe(@RequestParam(value = "i1") final String ingredient1,
                             @RequestParam(value = "i2") final String ingredient2,
                             @RequestParam(value = "i3", required = false, defaultValue = "") final String ingredient3) {

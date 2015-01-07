@@ -3,6 +3,7 @@ package org.mdo.tools.game.teso.alchemy.rest;
 import org.mdo.tools.game.teso.alchemy.services.EffectServices;
 import org.mdo.tools.game.teso.alchemy.services.dto.Effect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class EffectServicesRest {
      */
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
+    @Cacheable(value = "restCache")
     public List<Effect> getAll() {
         return services.getAll();
     }
@@ -37,6 +39,7 @@ public class EffectServicesRest {
      */
     @RequestMapping(method = RequestMethod.GET, value = "/{ref}")
     @ResponseBody
+    @Cacheable(value = "restCache")
     public Effect getDetails(@PathVariable(value = "ref") final String ref) {
         return services.getDetails(ref);
     }
