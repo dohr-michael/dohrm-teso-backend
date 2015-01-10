@@ -1,5 +1,6 @@
 package org.mdo.tools.game.teso.alchemy.rest;
 
+import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.mdo.tools.game.teso.alchemy.services.IngredientServices;
 import org.mdo.tools.game.teso.alchemy.services.dto.Ingredient;
@@ -46,31 +47,22 @@ public class IngredientServicesRest {
     }
 
     /**
-     * Returns all ingredients compatible with ingredients passed in parameters.
-     *
-     * @param ref reference of ingredient to check.
-     * @return list of ingredients.
-     */
-    @RequestMapping(method = RequestMethod.GET, value = "/{ref}/compatibles")
-    @ResponseBody
-    @Cacheable(value = "restCache")
-    public List<Ingredient> getCompatibles(@PathVariable(value = "ref") final String ref) {
-        return services.getCompatiblesIngredients(Lists.newArrayList(ref));
-    }
-
-    /**
      * Returns all ingredients compatible with the union of ingredients passed in parameters.
      *
      * @param ref1 ref1
      * @param ref2 ref2
      * @return the list of ingredients.
      */
-    @RequestMapping(method = RequestMethod.GET, value = "/{ref1}/{ref2}/compatibles")
+    @RequestMapping(method = RequestMethod.GET, value = "/compatibles")
     @ResponseBody
     @Cacheable(value = "restCache")
-    public List<Ingredient> getCompatibles(@PathVariable(value = "ref1") final String ref1,
-                                           @PathVariable(value = "ref2") final String ref2) {
-        return services.getCompatiblesIngredients(Lists.newArrayList(ref1, ref2));
+    public List<Ingredient> getCompatibles(@RequestParam(value = "ref1") final String ref1,
+                                           @RequestParam(value = "ref2", required = false, defaultValue = "") final String ref2) {
+        if (Strings.nullToEmpty(ref2).equals("")) {
+            return services.getCompatiblesIngredients(Lists.newArrayList(ref1));
+        } else {
+            return services.getCompatiblesIngredients(Lists.newArrayList(ref1, ref2));
+        }
     }
 
 }

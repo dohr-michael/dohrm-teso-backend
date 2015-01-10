@@ -22,9 +22,9 @@ public class RecipeServicesRest {
     @RequestMapping(method = RequestMethod.GET, value = "ingredients")
     @ResponseBody
     @Cacheable(value = "restCache")
-    public Recipe getRecipe(@RequestParam(value = "i1") final String ingredient1,
-                            @RequestParam(value = "i2") final String ingredient2,
-                            @RequestParam(value = "i3", required = false, defaultValue = "") final String ingredient3) {
+    public Recipe getRecipe(@RequestParam(value = "ref1") final String ingredient1,
+                            @RequestParam(value = "ref2") final String ingredient2,
+                            @RequestParam(value = "ref3", required = false, defaultValue = "") final String ingredient3) {
         if (Strings.nullToEmpty(ingredient3).equals("")) {
             return services.getRecipeFromIngredients(Lists.newArrayList(ingredient1, ingredient2));
         } else {
