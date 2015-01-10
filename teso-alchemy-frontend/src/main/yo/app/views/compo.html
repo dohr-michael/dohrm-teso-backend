@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-lg-3">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>First Ingredient</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in firstList | orderBy:'name.fr'">
+        <td ng-click="selectFirst(item.ref)"
+            ng-class="firstRef==item.ref?'active':''">
+          <span><img ng-src="{{'data:image/gif;base64,' + item.image}}"> {{item.name['fr']}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-3">
+    <table ng-if="firstRef != null" class="table table-bordered">
+      <thead>
+      <tr>
+        <th>First Ingredient</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in secondList | orderBy:'name.fr'">
+        <td ng-click="selectSecond(item.ref)"
+            ng-class="secondRef==item.ref?'active':''">
+          <span><img ng-src="{{'data:image/gif;base64,' + item.image}}"> {{item.name['fr']}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-3">
+    <table ng-if="secondRef != null" class="table table-bordered">
+      <thead>
+      <tr>
+        <th>First Ingredient</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in thirdList | orderBy:'name.fr'">
+        <td ng-click="selectThird(item.ref)"
+            ng-class="thirdRef==item.ref?'active':''">
+          <span><img ng-src="{{'data:image/gif;base64,' + item.image}}"> {{item.name['fr']}}</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-lg-3">
+    <div ng-if="recipe != null" class="container">
+      <div class="row">
+        <div class="col-lg-2">Effets</div>
+        <div class="col-lg-10">
+          <ul>
+            <li ng-repeat="effect in recipe.effects | orderBy:'name.fr'">
+              {{effect.name['fr']}}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

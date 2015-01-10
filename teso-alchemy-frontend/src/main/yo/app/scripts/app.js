@@ -10,6 +10,7 @@
  */
 angular
   .module('tesoAlchemyApp', [
+    'restangular',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -35,7 +36,14 @@ angular
         templateUrl: 'views/effects.html',
         controller: 'EffectsCtrl'
       })
+      .when('/compo', {
+        templateUrl: 'views/compo.html',
+        controller: 'CompoCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function (RestangularProvider) {
+    RestangularProvider.setBaseUrl("http://localhost:8080");
   });

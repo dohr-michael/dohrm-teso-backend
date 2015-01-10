@@ -8,11 +8,7 @@
  * Controller of the tesoAlchemyApp
  */
 angular.module('tesoAlchemyApp')
-  .controller('IngredientsCtrl', function ($scope, Ingredient, Utils) {
-    Ingredient.query(function (data) {
-      data.forEach(function (item) {
-        item.effects = item.effects.sort(Utils.sortNameAsc);
-      });
-      $scope.ingredients = data.sort(Utils.sortNameAsc);
-    });
-  });
+  .controller('IngredientsCtrl', function ($scope, IngredientService) {
+    $scope.ingredients = IngredientService.all();
+  }
+);

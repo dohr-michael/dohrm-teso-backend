@@ -7,11 +7,11 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="effect in effects">
+    <tr ng-repeat="effect in effects | orderBy:'name.fr'">
       <td>{{effect.name['fr']}}</td>
       <td>
         <ul>
-          <li ng-repeat="ingredient in effect.ingredients">
+          <li ng-repeat="ingredient in effect.ingredients | orderBy:'name.fr'">
             <span><img ng-src="{{'data:image/gif;base64,' + ingredient.image}}"> {{ingredient.name['fr']}}</span>
           </li>
         </ul>

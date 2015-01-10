@@ -8,9 +8,14 @@
  * Service in the tesoAlchemyApp.
  */
 angular.module('tesoAlchemyApp')
-  .factory('Effect', function ($resource) {
-    return $resource('http://localhost:8080/effects/:id', {},
-      {
-        query: {method: 'GET', isArray: true},
-      })
+  .factory('Effect', function (Restangular) {
+    return {
+      /**
+       * Return all effect.
+       * @returns {*}
+       */
+      all: function () {
+        return Restangular.all('effects').getList().$object;
+      }
+    }
   });
