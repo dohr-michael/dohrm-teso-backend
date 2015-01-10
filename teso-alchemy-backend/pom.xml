@@ -13,6 +13,8 @@
     <packaging>war</packaging>
     <properties>
         <db.url>jdbc:postgresql://docker:5432/teso</db.url>
+        <db.name>teso</db.name>
+        <db.password>teso</db.password>
     </properties>
 
     <dependencies>
@@ -85,17 +87,6 @@
         </plugins>
     </build>
     <profiles>
-        <profile>
-            <id>prod</id>
-            <activation>
-                <activeByDefault>
-                    false
-                </activeByDefault>
-            </activation>
-            <properties>
-                <db.url>postgresql://$OPENSHIFT_POSTGRESQL_DB_HOST:$OPENSHIFT_POSTGRESQL_DB_PORT</db.url>
-            </properties>
-        </profile>
         <profile>
             <id>debug</id>
             <activation>
