@@ -28,15 +28,15 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/ingredients', {
+      .when('/alchemy/ingredients', {
         templateUrl: 'views/ingredients.html',
         controller: 'IngredientsCtrl'
       })
-      .when('/effects', {
+      .when('/alchemy/effects', {
         templateUrl: 'views/effects.html',
         controller: 'EffectsCtrl'
       })
-      .when('/compo', {
+      .when('/alchemy/compo', {
         templateUrl: 'views/compo.html',
         controller: 'CompoCtrl'
       })
@@ -45,6 +45,6 @@ angular
       });
   })
   .config(function (RestangularProvider) {
-    RestangularProvider.setBaseUrl("http://localhost:8080");
-    //RestangularProvider.setBaseUrl("http://backend.dohrm.fr/teso");
+    //RestangularProvider.setBaseUrl("http://localhost:8080");
+    RestangularProvider.setBaseUrl("http://backend.dohrm.fr/teso");
   });

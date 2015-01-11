@@ -11,6 +11,14 @@ import java.util.List;
 public interface RecipeServices {
 
     /**
+     * Returns the recipes possible based to ingredients passed in parameters.
+     *
+     * @param ingredientsRef ingredients to check.
+     * @return the available recipes.
+     */
+    List<Recipe> getAvailableRecipesForIngredients(List<String> ingredientsRef);
+
+    /**
      * Returns the recipe based to ingredients passed in parameters.
      *
      * @param ingredientsRef ingredients to check.

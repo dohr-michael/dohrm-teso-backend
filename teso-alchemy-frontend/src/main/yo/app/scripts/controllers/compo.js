@@ -18,22 +18,46 @@ angular.module('tesoAlchemyApp')
      * Select the first ingredient.
      * @param first
      */
-    $scope.selectFirst = function (item) {
-      $scope.first = item;
+    $scope.selectFirst = function (first) {
+      $scope.first = first;
       $scope.second = null;
       $scope.third = null;
       $scope.recipe = null;
-      $scope.secondList = IngredientService.findCompatible(item.ref);
+      RecipeServices.byIngredients(first.ref).then(function (data) {
+        $scope.secondList = data.map(function (item) {
+          var filtered = item.ingredients.filter(function (current) {
+            return current.ref != first.ref;
+          });
+          return {
+            name: filtered[0].name,
+            ref: filtered[0].ref,
+            image: filtered[0].image,
+            recipe: item
+          };
+        });
+      });
     };
     /**
      * Select the second ingredient.
      * @param second
      */
-    $scope.selectSecond = function (item) {
-      $scope.second = item;
+    $scope.selectSecond = function (second) {
+      $scope.second = second;
       $scope.third = null;
-      $scope.thirdList = IngredientService.findCompatible($scope.first.ref, item.ref);
-      $scope.recipe = RecipeServices.byIngredients($scope.first.ref, item.ref);
+
+      RecipeServices.byIngredients($scope.first.ref, second.ref).then(function (data) {
+        $scope.thirdList = data.map(function (item) {
+          var filtered = item.ingredients.filter(function (current) {
+            return current.ref != $scope.first.ref && current.ref != second.ref;
+          });
+          return {
+            name: filtered[0].name,
+            ref: filtered[0].ref,
+            image: filtered[0].image,
+            recipe: item
+          };
+        });
+      });
     };
     /**
      * Select the third ingredient.
@@ -41,6 +65,5 @@ angular.module('tesoAlchemyApp')
      */
     $scope.selectThird = function (item) {
       $scope.third = item;
-      $scope.recipe = RecipeServices.byIngredients($scope.first.ref, $scope.second.ref, item.ref);
     };
   });

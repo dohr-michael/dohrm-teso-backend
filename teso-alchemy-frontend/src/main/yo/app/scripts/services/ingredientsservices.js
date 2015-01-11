@@ -15,7 +15,7 @@ angular.module('tesoAlchemyApp')
        * @returns {*}
        */
       all: function () {
-        return Restangular.all('/ingredients').getList().$object;
+        return Restangular.all('ingredients').getList().$object;
       },
       /**
        * Returns specifics ingredient.

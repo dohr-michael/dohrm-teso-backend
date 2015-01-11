@@ -1,20 +1,30 @@
+<h2>Recette (Par Ingredients)</h2>
 <div class="row">
-  <div class="col-lg-4">
-    <compo-ingredient title="First Ingredient"
+  <div class="col-lg-12">
+    <span><b>Composition :</b>
+      <span ng-if="first != null"><i>{{first.name['fr']}}</i></span>
+      <span ng-if="second != null"> > <i>{{second.name['fr']}}</i></span>
+      <span ng-if="third != null"> > <i>{{third.name['fr']}}</i></span>
+    </span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-4">
+    <compo-ingredient title="Premier"
                       ingredients="firstList"
                       on-change="selectFirst(data)">
     </compo-ingredient>
   </div>
-  <div class="col-lg-4">
+  <div class="col-xs-4">
     <compo-ingredient ng-if="first != null"
-                      title="Second Ingredient"
+                      title="Second"
                       ingredients="secondList"
                       on-change="selectSecond(data)">
     </compo-ingredient>
   </div>
-  <div class="col-lg-4">
+  <div class="col-xs-4">
     <compo-ingredient ng-if="second != null"
-                      title="Third Ingredient"
+                      title="Troisième"
                       ingredients="thirdList"
                       on-change="selectThird(data)">
     </compo-ingredient>
