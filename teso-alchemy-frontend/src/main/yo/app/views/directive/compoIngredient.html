@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>First Ingredient</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="item in ingredients | orderBy:'name.fr'"
+      ng-click="select(item)">
+
+    <td ng-class="current != null && current.ref == item.ref ? 'active' : ''">
+      <span><img ng-src="{{'data:image/gif;base64,' + item.image}}"> {{item.name['fr']}}</span>
+    </td>
+  </tr>
+  </tbody>
+</table>

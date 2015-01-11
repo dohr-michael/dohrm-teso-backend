@@ -46,4 +46,5 @@ angular
   })
   .config(function (RestangularProvider) {
     RestangularProvider.setBaseUrl("http://localhost:8080");
+    //RestangularProvider.setBaseUrl("http://backend.dohrm.fr/teso");
   });
