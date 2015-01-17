@@ -9,7 +9,8 @@
     </thead>
     <tbody>
     <tr ng-repeat="ingredient in ingredients | orderBy:'name.fr'">
-      <td><span><img ng-src="{{'data:image/gif;base64,' + ingredient.image}}"> {{ingredient.name['fr']}}</span></td>
+      <td><span><img ng-src="{{'data:image/gif;base64,' + ingredientsImages[ingredient.ref]}}"> {{ingredient.name['fr']}}</span>
+      </td>
       <td>
         <ul>
           <li ng-repeat="effect in ingredient.effects | orderBy:'name.fr'">

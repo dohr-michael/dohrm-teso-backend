@@ -8,7 +8,8 @@
  * Controller of the tesoAlchemyApp
  */
 angular.module('tesoAlchemyApp')
-  .controller('CompoCtrl', function ($scope, IngredientService, RecipeServices) {
+  .controller('CompoCtrl', function ($scope, IngredientService, RecipeServices, ResourcesServices) {
+    $scope.ingredientsImages = ResourcesServices.ingredientsImages();
     // Initialization of datas
     $scope.first = null;
     $scope.second = null;

@@ -25,7 +25,8 @@ angular.module('tesoAlchemyApp')
          */
         onChange: '&'
       },
-      controller: function ($scope) {
+      controller: function ($scope, ResourcesServices) {
+        $scope.ingredientsImages = ResourcesServices.ingredientsImages();
         $scope.current = null;
         $scope.select = function (item) {
           $scope.current = item;

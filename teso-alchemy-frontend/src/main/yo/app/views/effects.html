@@ -13,7 +13,7 @@
       <td>
         <ul>
           <li ng-repeat="ingredient in effect.ingredients | orderBy:'name.fr'">
-            <span><img ng-src="{{'data:image/gif;base64,' + ingredient.image}}"> {{ingredient.name['fr']}}</span>
+            <span><img ng-src="{{'data:image/gif;base64,' + ingredientsImages[ingredient.ref]}}"> {{ingredient.name['fr']}}</span>
           </li>
         </ul>
       </td>

@@ -8,6 +8,7 @@
  * Controller of the tesoAlchemyApp
  */
 angular.module('tesoAlchemyApp')
-  .controller('EffectsCtrl', function ($scope, Effect) {
+  .controller('EffectsCtrl', function ($scope, Effect, ResourcesServices) {
+    $scope.ingredientsImages = ResourcesServices.ingredientsImages();
     $scope.effects = Effect.all();
   });

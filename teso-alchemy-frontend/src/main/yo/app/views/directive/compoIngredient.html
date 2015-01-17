@@ -9,7 +9,7 @@
       ng-click="select(item)"
       ng-class="current != null && current.ref == item.ref ? 'active' : ''">
     <td>
-      <span><img class="hidden-xs" ng-src="{{'data:image/gif;base64,' + item.image}}"> {{item.name['fr']}}</span>
+      <span><img class="hidden-xs" ng-src="{{'data:image/gif;base64,' + ingredientsImages[item.ref]}}"> {{item.name['fr']}}</span>
       <ul ng-if="item.recipe != null">
         <li ng-repeat="effect in item.recipe.effects | orderBy:'name.fr'">
           {{effect.name['fr']}}
