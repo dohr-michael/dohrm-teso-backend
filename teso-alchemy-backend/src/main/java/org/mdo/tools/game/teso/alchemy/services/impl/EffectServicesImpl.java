@@ -31,6 +31,12 @@ public class EffectServicesImpl implements EffectServices {
     }
 
     @Override
+    public List<Effect> getAll(List<String> effects) {
+        return Lists.transform(repository.findAll(effects),
+                new EffectFunction(translationRepository.findAll()));
+    }
+
+    @Override
     public Effect getDetails(String effectRef) {
         return new EffectFunction(translationRepository.findAll())
                 .apply(repository.findOne(effectRef));

@@ -18,6 +18,14 @@ public interface EffectServices {
     List<Effect> getAll();
 
     /**
+     * Returns all effects passed in parameters.
+     *
+     * @param effects effects to finds
+     * @return list of effects.
+     */
+    List<Effect> getAll(List<String> effects);
+
+    /**
      * Returns the details of an effect.
      *
      * @param effectRef effect to find.

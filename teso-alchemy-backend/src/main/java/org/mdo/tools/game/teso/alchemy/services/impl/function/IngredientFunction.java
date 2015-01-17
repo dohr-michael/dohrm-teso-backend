@@ -1,7 +1,6 @@
 package org.mdo.tools.game.teso.alchemy.services.impl.function;
 
 import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -36,7 +35,6 @@ public class IngredientFunction implements Function<IngredientEntity, Ingredient
             ingredient = new Ingredient();
             final String ref = Strings.nullToEmpty(input.getRef());
             ingredient.setRef(ref);
-            ingredient.setImage(input.getImage());
             final Iterable<TranslationEntity> filter = Iterables.filter(translations, t -> t != null && t.getId() != null && ("INGREDIENT_" + ref).equals(t.getId().getRef()));
             for (TranslationEntity translationEntity : filter) {
                 final Locale locale = new Locale(translationEntity.getId().getLocale());

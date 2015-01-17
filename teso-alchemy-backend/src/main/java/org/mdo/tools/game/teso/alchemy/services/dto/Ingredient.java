@@ -8,7 +8,6 @@ import java.util.*;
  */
 public class Ingredient {
     private String ref;
-    private String image;
     private final Map<Locale, String> name = new HashMap<>();
     private final List<Effect> effects = new ArrayList<>();
 
@@ -18,14 +17,6 @@ public class Ingredient {
 
     public void setRef(String ref) {
         this.ref = ref;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public Map<Locale, String> getName() {

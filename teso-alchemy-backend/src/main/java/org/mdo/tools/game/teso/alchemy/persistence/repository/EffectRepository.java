@@ -1,7 +1,6 @@
 package org.mdo.tools.game.teso.alchemy.persistence.repository;
 
 import org.mdo.tools.game.teso.alchemy.persistence.domain.EffectEntity;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -23,4 +22,8 @@ public interface EffectRepository extends JpaRepository<EffectEntity, String> {
     @Override
     @Query(value = "SELECT DISTINCT e FROM EffectEntity e  LEFT JOIN FETCH e.ingredients")
     List<EffectEntity> findAll();
+
+    @Override
+    @Query(value = "SELECT DISTINCT e FROM EffectEntity e LEFT JOIN FETCH e.ingredients WHERE e.ref IN (:refs)")
+    List<EffectEntity> findAll(@Param("refs") Iterable<String> refs);
 }

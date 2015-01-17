@@ -1,6 +1,7 @@
 package org.mdo.tools.game.teso.alchemy.services.impl;
 
 import com.google.common.collect.Sets;
+import org.mdo.tools.game.teso.alchemy.services.EffectServices;
 import org.mdo.tools.game.teso.alchemy.services.IngredientServices;
 import org.mdo.tools.game.teso.alchemy.services.RecipeServices;
 import org.mdo.tools.game.teso.alchemy.services.dto.Effect;
@@ -24,6 +25,9 @@ public class RecipeServicesImpl implements RecipeServices {
     @Autowired
     private IngredientServices ingredientServices;
 
+    @Autowired
+    private EffectServices effectServices;
+
     @Override
     public List<Recipe> getAvailableRecipesForIngredients(List<String> ingredientsRef) {
         final List<Recipe> result = new LinkedList<>();
@@ -42,9 +46,12 @@ public class RecipeServicesImpl implements RecipeServices {
     }
 
     @Override
-    public List<Recipe> getRecipesFromEffects(String... effectList) {
-        // TODO
-        return null;
+    public List<Recipe> getRecipesFromEffects(List<String> effectRefs) {
+        final List<Recipe> result = new LinkedList<>();
+        if (effectRefs != null && !effectRefs.isEmpty()) {
+            final List<Effect> effects = effectServices.getAll(effectRefs);
+        }
+        return result;
     }
 
     @Override

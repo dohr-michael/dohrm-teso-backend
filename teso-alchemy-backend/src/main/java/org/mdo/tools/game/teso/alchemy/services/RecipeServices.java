@@ -29,8 +29,8 @@ public interface RecipeServices {
     /**
      * Returns the list of recipes with effects passed in parameter.
      *
-     * @param effectList effects to find.
+     * @param effectRefs effects to find.
      * @return the recipes.
      */
-    List<Recipe> getRecipesFromEffects(String... effectList);
+    List<Recipe> getRecipesFromEffects(List<String> effectRefs);
 }
