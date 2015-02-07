@@ -1,8 +1,19 @@
 
 # Pull base image. (java 8 image)
-FROM dockerfile/java:oracle-java8
+# Pull base image.
+FROM dockerfile/ubuntu
 
 MAINTAINER Michael DOHR (dohr.michael@gmail.com)
+
+# Install Java.
+RUN \
+  echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java8-installer && \
+  rm -rf /var/lib/apt/lists/* && \
+  rm -rf /var/cache/oracle-jdk8-installer
+
 
 ADD ./target/teso-tools-backend.jar /usr/local/teso/
 
