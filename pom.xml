@@ -21,6 +21,7 @@
 
         <!-- versions third parties -->
         <guava.version>18.0</guava.version>
+        <spring-social.version>1.1.0.RELEASE</spring-social.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,14 @@
             <version>9.3-1102-jdbc41</version>
         </dependency>
 
+        <!-- Authentication. -->
+        <!--<dependency>-->
+        <!--<groupId>org.springframework.social</groupId>-->
+        <!--<artifactId>spring-social</artifactId>-->
+        <!--<version>${spring-social.version}</version>-->
+        <!--</dependency>-->
+
+
         <!-- Caching -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -75,7 +84,7 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <!--<scope>test</scope>-->
         </dependency>
     </dependencies>
 
